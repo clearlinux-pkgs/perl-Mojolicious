@@ -1,10 +1,17 @@
 
+8.01  2018-09-25
+  - Updated jQuery to version 3.3.1.
+  - Fixed order of command namespaces so Mojolicious can be upgraded without
+    uninstalling first.
+  - Fixed a small problem in one of the TLS tests where an error message check
+    was too picky.
+
 8.0  2018-09-15
   - Code name "Supervillain", this is a major release.
   - Changed query method in Mojo::URL to merge with hash references and append
     with array references instead of the other way around. Because appended
     pairs should be able to preserve order.
-  - Changed template attribute in Mojolicious::Command to acivate vars by
+  - Changed template attribute in Mojolicious::Command to activate vars by
     default.
   - Removed test command.
   - Removed deprecated expect_close attribute from Mojo::Content.
