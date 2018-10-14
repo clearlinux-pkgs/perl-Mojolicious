@@ -4,15 +4,15 @@
 #
 Name     : perl-Mojolicious
 Version  : 8.02
-Release  : 8
+Release  : 9
 URL      : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.02.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.02.tar.gz
 Summary  : 'Real-time web framework'
 Group    : Development/Tools
 License  : Artistic-2.0
-Requires: perl-Mojolicious-bin
-Requires: perl-Mojolicious-license
-Requires: perl-Mojolicious-man
+Requires: perl-Mojolicious-bin = %{version}-%{release}
+Requires: perl-Mojolicious-license = %{version}-%{release}
+Requires: perl-Mojolicious-man = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -83,12 +83,12 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/perl-Mojolicious
-cp LICENSE %{buildroot}/usr/share/doc/perl-Mojolicious/LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Mojolicious
+cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Mojolicious/LICENSE
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -97,146 +97,146 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Mojo.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Asset.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Asset/File.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Asset/Memory.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Base.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/ByteStream.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Cache.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Collection.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Content.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Content/MultiPart.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Content/Single.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Cookie.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Cookie/Request.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Cookie/Response.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/DOM.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/DOM/CSS.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/DOM/HTML.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Date.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/EventEmitter.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Exception.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/File.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Headers.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/HelloWorld.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Home.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/IOLoop.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/IOLoop/Client.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/IOLoop/Delay.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/IOLoop/Server.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/IOLoop/Stream.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/IOLoop/Subprocess.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/IOLoop/TLS.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/IOLoop/resources/server.crt
-/usr/lib/perl5/site_perl/5.26.1/Mojo/IOLoop/resources/server.key
-/usr/lib/perl5/site_perl/5.26.1/Mojo/JSON.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/JSON/Pointer.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Loader.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Log.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Message.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Message/Request.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Message/Response.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Parameters.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Path.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Promise.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Reactor.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Reactor/EV.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Reactor/Poll.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Server.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Server/CGI.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Server/Daemon.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Server/Hypnotoad.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Server/Morbo.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Server/Morbo/Backend.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Server/Morbo/Backend/Poll.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Server/PSGI.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Server/Prefork.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Template.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Transaction.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Transaction/HTTP.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Transaction/WebSocket.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/URL.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Upload.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/UserAgent.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/UserAgent/CookieJar.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/UserAgent/Proxy.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/UserAgent/Server.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/UserAgent/Transactor.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/Util.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojo/WebSocket.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/Author/cpanify.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/Author/generate.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/Author/generate/app.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/Author/generate/lite_app.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/Author/generate/makefile.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/Author/generate/plugin.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/Author/inflate.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/cgi.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/daemon.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/eval.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/get.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/prefork.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/psgi.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/routes.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Command/version.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Commands.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Controller.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Guides.pod
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Guides/Contributing.pod
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Guides/Cookbook.pod
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Guides/FAQ.pod
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Guides/Growing.pod
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Guides/Rendering.pod
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Guides/Routing.pod
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Guides/Testing.pod
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Guides/Tutorial.pod
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Lite.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin/Config.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin/DefaultHelpers.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin/EPLRenderer.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin/EPRenderer.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin/HeaderCondition.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin/JSONConfig.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin/Mount.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin/PODRenderer.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugin/TagHelpers.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Plugins.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Renderer.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Routes.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Routes/Match.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Routes/Pattern.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Routes/Route.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Sessions.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Static.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Types.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Validator.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/Validator/Validation.pm
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/favicon.ico
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/failraptor.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/jquery/jquery.js
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/logo-black-2x.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/logo-black.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/logo-white-2x.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/logo-white.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/logo.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/noraptor.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/notfound.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/pinstripe-dark.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/pinstripe-light.png
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/prettify/prettify-mojo-dark.css
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/prettify/prettify-mojo-light.css
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/public/mojo/prettify/run_prettify.js
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/templates/mojo/debug.html.ep
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/templates/mojo/exception.html.ep
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/templates/mojo/menubar.html.ep
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/templates/mojo/not_found.html.ep
-/usr/lib/perl5/site_perl/5.26.1/Mojolicious/resources/templates/mojo/perldoc.html.ep
-/usr/lib/perl5/site_perl/5.26.1/Test/Mojo.pm
-/usr/lib/perl5/site_perl/5.26.1/ojo.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Asset.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Asset/File.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Asset/Memory.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Base.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/ByteStream.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Cache.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Collection.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Content.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Content/MultiPart.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Content/Single.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Cookie.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Cookie/Request.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Cookie/Response.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/DOM.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/DOM/CSS.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/DOM/HTML.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Date.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/EventEmitter.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Exception.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/File.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Headers.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/HelloWorld.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Home.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/Client.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/Delay.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/Server.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/Stream.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/Subprocess.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/TLS.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/resources/server.crt
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/resources/server.key
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/JSON.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/JSON/Pointer.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Loader.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Log.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Message.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Message/Request.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Message/Response.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Parameters.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Path.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Promise.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Reactor.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Reactor/EV.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Reactor/Poll.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Server.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Server/CGI.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Server/Daemon.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Server/Hypnotoad.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Server/Morbo.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Server/Morbo/Backend.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Server/Morbo/Backend/Poll.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Server/PSGI.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Server/Prefork.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Template.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Transaction.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Transaction/HTTP.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Transaction/WebSocket.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/URL.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Upload.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/UserAgent.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/UserAgent/CookieJar.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/UserAgent/Proxy.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/UserAgent/Server.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/UserAgent/Transactor.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/Util.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojo/WebSocket.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/Author/cpanify.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/Author/generate.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/Author/generate/app.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/Author/generate/lite_app.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/Author/generate/makefile.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/Author/generate/plugin.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/Author/inflate.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/cgi.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/daemon.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/eval.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/get.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/prefork.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/psgi.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/routes.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Command/version.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Commands.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Controller.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Guides.pod
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Guides/Contributing.pod
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Guides/Cookbook.pod
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Guides/FAQ.pod
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Guides/Growing.pod
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Guides/Rendering.pod
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Guides/Routing.pod
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Guides/Testing.pod
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Guides/Tutorial.pod
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Lite.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin/Config.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin/DefaultHelpers.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin/EPLRenderer.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin/EPRenderer.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin/HeaderCondition.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin/JSONConfig.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin/Mount.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin/PODRenderer.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugin/TagHelpers.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Plugins.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Renderer.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Routes.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Routes/Match.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Routes/Pattern.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Routes/Route.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Sessions.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Static.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Types.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Validator.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/Validator/Validation.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/favicon.ico
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/failraptor.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/jquery/jquery.js
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/logo-black-2x.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/logo-black.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/logo-white-2x.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/logo-white.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/logo.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/noraptor.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/notfound.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/pinstripe-dark.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/pinstripe-light.png
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/prettify/prettify-mojo-dark.css
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/prettify/prettify-mojo-light.css
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/public/mojo/prettify/run_prettify.js
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/templates/mojo/debug.html.ep
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/templates/mojo/exception.html.ep
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/templates/mojo/menubar.html.ep
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/templates/mojo/not_found.html.ep
+/usr/lib/perl5/vendor_perl/5.26.1/Mojolicious/resources/templates/mojo/perldoc.html.ep
+/usr/lib/perl5/vendor_perl/5.26.1/Test/Mojo.pm
+/usr/lib/perl5/vendor_perl/5.26.1/ojo.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -367,10 +367,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/doc/perl-Mojolicious/LICENSE
+/usr/share/package-licenses/perl-Mojolicious/LICENSE
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/hypnotoad.1
 /usr/share/man/man1/mojo.1
 /usr/share/man/man1/morbo.1
