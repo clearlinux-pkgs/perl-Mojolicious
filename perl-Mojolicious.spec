@@ -4,7 +4,7 @@
 #
 Name     : perl-Mojolicious
 Version  : 8.04
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.04.tar.gz
 Summary  : 'Real-time web framework'
