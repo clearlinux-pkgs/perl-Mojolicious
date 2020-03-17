@@ -4,10 +4,10 @@
 #
 Name     : perl-Mojolicious
 Version  : 8.34
-Release  : 51
+Release  : 52
 URL      : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.34.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.34.tar.gz
-Summary  : Real-time web framework
+Summary  : 'Real-time web framework'
 Group    : Development/Tools
 License  : Artistic-2.0
 Requires: perl-Mojolicious-bin = %{version}-%{release}
@@ -37,7 +37,6 @@ Summary: dev components for the perl-Mojolicious package.
 Group: Development
 Requires: perl-Mojolicious-bin = %{version}-%{release}
 Provides: perl-Mojolicious-devel = %{version}-%{release}
-Requires: perl-Mojolicious = %{version}-%{release}
 Requires: perl-Mojolicious = %{version}-%{release}
 
 %description dev
