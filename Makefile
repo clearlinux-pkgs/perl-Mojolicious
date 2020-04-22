@@ -1,5 +1,5 @@
 PKG_NAME := perl-Mojolicious
-URL = https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.37.tar.gz
+URL = https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-8.39.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
