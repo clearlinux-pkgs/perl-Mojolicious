@@ -1,4 +1,10 @@
 
+8.65  2020-11-10
+  - Added generate dockerfile command. (tianon)
+  - Improved cookbook with container deployment recipe.
+  - Improved security of secure_compare function in Mojo::Util. (robrwo)
+  - Fixed all generated code to consistently use a *::Sandbox class, instead of *::SandBox.
+
 8.64  2020-11-01
   - Replaced prettify.js with highlight.js. (zakame)
   - Fixed a bug in Mojo::DOM where the tree root would be checked for all pseudo-classes.
