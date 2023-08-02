@@ -5,7 +5,7 @@
 #
 Name     : perl-Mojolicious
 Version  : 9.33
-Release  : 124
+Release  : 125
 URL      : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-9.33.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-9.33.tar.gz
 Summary  : 'Real-time web framework'
