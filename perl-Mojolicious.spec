@@ -4,10 +4,10 @@
 # Using build pattern: cpan
 #
 Name     : perl-Mojolicious
-Version  : 9.33
-Release  : 125
-URL      : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-9.33.tar.gz
-Source0  : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-9.33.tar.gz
+Version  : 9.34
+Release  : 126
+URL      : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-9.34.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-9.34.tar.gz
 Summary  : 'Real-time web framework'
 Group    : Development/Tools
 License  : Artistic-2.0
@@ -73,8 +73,8 @@ perl components for the perl-Mojolicious package.
 
 
 %prep
-%setup -q -n Mojolicious-9.33
-cd %{_builddir}/Mojolicious-9.33
+%setup -q -n Mojolicious-9.34
+cd %{_builddir}/Mojolicious-9.34
 
 %build
 export http_proxy=http://127.0.0.1:9/
